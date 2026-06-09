@@ -1,0 +1,28 @@
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj.user
+.httr-oauth
+*.RDS
+*.rds
+
+# R package build artifacts
+/*.tar.gz
+/*.zip
+
+# Shiny cache
+rsconnect/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
