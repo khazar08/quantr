@@ -1,4 +1,4 @@
-# QuantR — Quantitative Finance Analytics Dashboard
+# Quantitative Finance Analytics Dashboard
 
 A multi-tab interactive Shiny dashboard for quantitative financial analysis. Pulls live data from Yahoo Finance and combines portfolio optimization, risk analytics, Monte Carlo simulation, technical analysis, and time-series forecasting in a single dark-themed interface.
 
@@ -108,9 +108,3 @@ QuantR/
 | Forecasting | `forecast` (ARIMA, ETS, Theta) |
 | Technical indicators | `TTR` |
 | Data wrangling | `tidyverse` |
-
----
-
-## License
-
-MIT
