@@ -8,7 +8,6 @@ server <- function(input, output, session) {
     fc_out   = NULL
   )
 
-  # ── Data fetch ──────────────────────────────────────────────────────────────
   observeEvent(input$fetch_data, {
     req(length(input$tickers) >= 2)
 
@@ -64,7 +63,6 @@ server <- function(input, output, session) {
              format(max(index(rv$returns)), "%b %d %Y"))
   })
 
-  # ── KPI Cards ───────────────────────────────────────────────────────────────
   output$kpi_cards <- renderUI({
     req(rv$returns)
     tks <- colnames(rv$returns)
@@ -93,7 +91,6 @@ server <- function(input, output, session) {
     fluidRow(!!!cards)
   })
 
-  # ── Overview: Normalized performance ────────────────────────────────────────
   output$perf_chart <- renderPlotly({
     req(rv$prices)
     p <- plot_ly()
@@ -150,7 +147,6 @@ server <- function(input, output, session) {
                  xaxis = list(title = ""), hovermode = "x unified") %>% apply_dark()
   })
 
-  # ── Market analysis ──────────────────────────────────────────────────────────
   mk_df <- reactive({
     req(rv$prices, input$mk_ticker %in% names(rv$prices))
     ohlcv_to_df(rv$prices[[input$mk_ticker]]) %>% add_indicators()
@@ -223,7 +219,6 @@ server <- function(input, output, session) {
                                                         c("#f78166","#8b949e","#3fb950")))
   })
 
-  # ── Portfolio ────────────────────────────────────────────────────────────────
   output$frontier_plot <- renderPlotly({
     req(rv$frontier, rv$returns)
     front  <- rv$frontier
@@ -320,7 +315,6 @@ server <- function(input, output, session) {
                  xaxis=list(title=""), hovermode="x unified") %>% apply_dark()
   })
 
-  # ── Risk ─────────────────────────────────────────────────────────────────────
   risk_r <- reactive({
     req(rv$returns, input$risk_ticker %in% colnames(rv$returns))
     r <- as.numeric(rv$returns[, input$risk_ticker]); r[!is.na(r)]
@@ -398,7 +392,6 @@ server <- function(input, output, session) {
                 options=list(dom="t", pageLength=20))
   })
 
-  # ── Monte Carlo ──────────────────────────────────────────────────────────────
   observeEvent(input$run_mc, {
     req(rv$prices, rv$returns, input$mc_ticker %in% colnames(rv$returns))
     r     <- as.numeric(rv$returns[, input$mc_ticker]); r <- r[!is.na(r)]
