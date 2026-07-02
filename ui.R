@@ -1,7 +1,6 @@
 ui <- dashboardPage(
   skin = "black",
 
-  # ── Header ──────────────────────────────────────────────────────────────────
   dashboardHeader(
     title = tags$span(
       style = "font-weight:700; font-size:17px; letter-spacing:-0.3px;",
@@ -15,7 +14,6 @@ ui <- dashboardPage(
     )
   ),
 
-  # ── Sidebar ──────────────────────────────────────────────────────────────────
   dashboardSidebar(
     width = 250,
     tags$style(HTML("
@@ -66,7 +64,6 @@ ui <- dashboardPage(
     )
   ),
 
-  # ── Body ─────────────────────────────────────────────────────────────────────
   dashboardBody(
     tags$head(
       tags$link(rel = "stylesheet", href = "custom.css"),
@@ -76,7 +73,6 @@ ui <- dashboardPage(
 
     tabItems(
 
-      # ── Overview ─────────────────────────────────────────────────────────────
       tabItem("overview",
         fluidRow(uiOutput("kpi_cards")),
         fluidRow(
@@ -97,7 +93,6 @@ ui <- dashboardPage(
         )
       ),
 
-      # ── Market Analysis ───────────────────────────────────────────────────────
       tabItem("market",
         fluidRow(
           box(width = 12,
@@ -134,7 +129,6 @@ ui <- dashboardPage(
         )
       ),
 
-      # ── Portfolio ─────────────────────────────────────────────────────────────
       tabItem("portfolio",
         fluidRow(
           box(title = "Efficient Frontier", width = 8,
@@ -155,7 +149,6 @@ ui <- dashboardPage(
         )
       ),
 
-      # ── Risk Analysis ─────────────────────────────────────────────────────────
       tabItem("risk",
         fluidRow(uiOutput("risk_kpis")),
         fluidRow(
@@ -177,7 +170,6 @@ ui <- dashboardPage(
         )
       ),
 
-      # ── Monte Carlo ───────────────────────────────────────────────────────────
       tabItem("montecarlo",
         fluidRow(
           box(width = 12,
@@ -207,7 +199,6 @@ ui <- dashboardPage(
         )
       ),
 
-      # ── Forecast ─────────────────────────────────────────────────────────────
       tabItem("forecast",
         fluidRow(
           box(width = 12,
